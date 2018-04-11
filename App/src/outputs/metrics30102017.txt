@@ -1,0 +1,4 @@
+Max humidity: 93
+Max temperature: 16
+Min temperature: 8
+Precipitation: 6.35
