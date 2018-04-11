@@ -17,7 +17,14 @@ public class IOHelper {
 		return result;
 	}
 	
-	public static void CreateMetric(String filename, String text) throws IOException {
+	public static String removeSpaces(String input) {
+		String output = null;
+		if (input!=null)
+			output = input.replaceAll(" ", "_");
+		return output;
+	}
+	
+	public static void WriteFile(String filename, String text) throws IOException {
 		BufferedWriter output = null;
 		try {
 			File file = new File("./src/outputs/" + filename + ".txt");

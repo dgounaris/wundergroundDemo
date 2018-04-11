@@ -9,7 +9,9 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
+import utilities.Date;
 import utilities.IOHelper;
+import utilities.Location;
 
 public class ConnectionManager {
 
@@ -17,12 +19,12 @@ public class ConnectionManager {
 	
 	private static final String API_KEY = "25b207a3bca669f7";
 	
-	public static JSONObject getDateHistory(int day, int month, int year) {
+	public static JSONObject getDateHistory(Date date, Location location) {
 		
 		JSONObject jsonObject = null;
 		
 		try {
-			String urlString = "http://api.wunderground.com/api/" + API_KEY + "/history_" + year + month + day + "/q/NY/New_York.json";
+			String urlString = "http://api.wunderground.com/api/" + API_KEY + "/history_" + date.getYear() + date.getMonth() + date.getDay() + "/q/" + location.getShortname() + "/" + IOHelper.removeSpaces(location.getFullname()) + ".json";
 			URL url = new URL(urlString);
 			URLConnection conn = url.openConnection();
 			InputStream inputStream = conn.getInputStream();
