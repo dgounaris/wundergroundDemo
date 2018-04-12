@@ -30,6 +30,10 @@ public class WeatherHistoryManager {
 	
 	public void reload() {
 		response = ConnectionManager.getDateHistory(date, location);
+		this.maxHumidity = response.getJSONObject("history").getJSONArray("dailysummary").getJSONObject(0).getInt("maxhumidity");
+		this.maxTemp = response.getJSONObject("history").getJSONArray("dailysummary").getJSONObject(0).getInt("maxtempm");
+		this.minTemp = response.getJSONObject("history").getJSONArray("dailysummary").getJSONObject(0).getInt("mintempm");
+		this.precipitation = response.getJSONObject("history").getJSONArray("dailysummary").getJSONObject(0).getDouble("precipm");
 	}
 	
 	public String getDate() { return date.toString(); }
